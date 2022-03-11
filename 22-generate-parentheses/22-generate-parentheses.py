@@ -8,7 +8,7 @@ class Solution:
             
             if openb < n:
                 backtrack(ans,string+"(",openb+1,closeb,n)
-            
+        
             if closeb < openb:
                 backtrack(ans,string+")",openb,closeb+1,n)
         ans=[] 
