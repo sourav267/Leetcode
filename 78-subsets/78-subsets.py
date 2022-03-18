@@ -1,21 +1,16 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        def backtrack(first = 0, curr = []):
-            # if the combination is done
+        def backtrack(first,curr,output,k):
+            # if the combination is done is of size k
             if len(curr) == k:  
                 output.append(curr)
                 return
-            for i in range(first, n):
-                # add nums[i] into the current combination
-                # curr.append(nums[i])
-                # use next integers to complete the combination
-                backtrack(i + 1, curr+[nums[i]])
-                # backtrack
-                # curr.pop()
+            for j in range(first, n):
+                backtrack(j + 1, curr+[nums[j]],output,k)
         
         output = []
         n = len(nums)
         for k in range(n + 1):
-            backtrack()
+            backtrack(0,[],output,k)
         return output
         
