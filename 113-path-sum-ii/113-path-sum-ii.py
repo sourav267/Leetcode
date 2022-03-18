@@ -14,7 +14,8 @@ class Solution:
                 arr.append(root.val)
                 result.append(arr)
                 return
-            dfs(root.left,sum_value+root.val,targetSum,arr + [root.val],result) or dfs(root.right,sum_value+root.val,targetSum,arr + [root.val],result)
+            dfs(root.left,sum_value+root.val,targetSum,arr + [root.val],result)
+            dfs(root.right,sum_value+root.val,targetSum,arr + [root.val],result)
         
         res = []
         dfs(root,0,targetSum,[],res)
