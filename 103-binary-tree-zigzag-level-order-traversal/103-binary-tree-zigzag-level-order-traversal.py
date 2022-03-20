@@ -14,13 +14,13 @@ class Solution:
         q = deque()
         q.append(root)
         res = []
-        l = 0
+        l_to_r = True
         while q:
             level_count = len(q)
             curr_list = []
             for x in range(level_count):
-                elem = q.popleft() if l % 2 == 0 else q.pop()
-                if l % 2 == 0:
+                elem = q.popleft() if l_to_r else q.pop()
+                if l_to_r :
                     if elem.left:
                         q.append(elem.left)
                     if elem.right:
@@ -32,6 +32,6 @@ class Solution:
                         q.appendleft(elem.left)
                 curr_list.append(elem.val)
             res.append(curr_list)
-            l += 1
+            l_to_r = not l_to_r
         return res
         
