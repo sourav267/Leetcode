@@ -1,5 +1,7 @@
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        # DP -> space optimized
+        
         m = len(obstacleGrid)
         n = len(obstacleGrid[0])
         prev = [0 for _ in range(n)]
@@ -17,7 +19,9 @@ class Solution:
                     temp[j] =  up + left
             prev = temp
         return prev[-1]
-        
+
+    
+#         DP -> time optimized
 #         dp =[[0 for _ in range(n)]] * m
 #         for i in range(m):
 #             for j in range(n):
@@ -31,6 +35,7 @@ class Solution:
                     
 #                     dp[i][j] =  up + left
 #         return dp[m-1][n-1]
+        
         # Recursion
         # def countPath(i,j,arr):
         #     if i==0 and j == 0 and arr[i][j] == 0:
