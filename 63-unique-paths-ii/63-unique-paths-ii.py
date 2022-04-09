@@ -2,19 +2,35 @@ class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
         m = len(obstacleGrid)
         n = len(obstacleGrid[0])
-        dp =[[0 for _ in range(n)]] * m
+        prev = [0 for _ in range(n)]
         for i in range(m):
+            temp = [0 for _ in range(n)]
             for j in range(n):
                 if i == 0 and j == 0 and obstacleGrid[i][j]==0:
-                    dp[i][j] = 1
+                    temp[j] = 1
                 else:
                     up = 0
                     left = 0
-                    if i > 0 and obstacleGrid[i][j] == 0: up = dp[i-1][j]
-                    if j > 0 and obstacleGrid[i][j] == 0: left = dp[i][j-1]
+                    if i > 0 and obstacleGrid[i][j] == 0: up = prev[j]
+                    if j > 0 and obstacleGrid[i][j] == 0: left = temp[j-1]
                     
-                    dp[i][j] =  up + left
-        return dp[m-1][n-1]
+                    temp[j] =  up + left
+            prev = temp
+        return prev[-1]
+        
+#         dp =[[0 for _ in range(n)]] * m
+#         for i in range(m):
+#             for j in range(n):
+#                 if i == 0 and j == 0 and obstacleGrid[i][j]==0:
+#                     dp[i][j] = 1
+#                 else:
+#                     up = 0
+#                     left = 0
+#                     if i > 0 and obstacleGrid[i][j] == 0: up = dp[i-1][j]
+#                     if j > 0 and obstacleGrid[i][j] == 0: left = dp[i][j-1]
+                    
+#                     dp[i][j] =  up + left
+#         return dp[m-1][n-1]
         # Recursion
         # def countPath(i,j,arr):
         #     if i==0 and j == 0 and arr[i][j] == 0:
