@@ -21,13 +21,5 @@ class Solution:
                 if nums[i-1] <= j:
                     take = dp[i-1][j-nums[i-1]]
                 dp[i][j] = take or notTake
-        
-        # # print(dp[n-1])
-        # mini = float("inf")
-        # for s1 in range(k//2 + 1):
-        #     if dp[n-1][s1] == True:
-        #         mini = min(mini,abs((k-s1)-s1))
-        # print(mini)
-        # return True if mini == 0  else False
         return dp[n][k];
         
