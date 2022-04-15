@@ -3,13 +3,13 @@ class Solution:
         
         def findAnswer(s1,s2,i,j,dp):
 
-            if i < 0 or j < 0:
+            if i == 0 or j == 0:
                 return 0
             
             if dp[i][j] != -1:
                 return dp[i][j]
 
-            if s1[i] == s2[j]:
+            if s1[i-1] == s2[j-1]:
                 dp[i][j] = 1 + findAnswer(s1,s2,i-1,j-1,dp)
                 return dp[i][j]
 
@@ -18,7 +18,7 @@ class Solution:
         
         n = len(text1)
         m = len(text2)
-        dp = [[-1 for j in range(m)] for i in range(n)]
-        ans = findAnswer(text1,text2,n-1,m-1,dp)
+        dp = [[-1 for j in range(m+1)] for i in range(n+1)]
+        ans = findAnswer(text1,text2,n,m,dp)
         return ans
         
