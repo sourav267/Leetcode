@@ -18,7 +18,7 @@ class Solution:
 
         n = len(text1)
         m = len(text2)
-        dp = [[-1 for j in range(m+1)] for i in range(n+1)]
+        dp = [[0 for j in range(m+1)] for i in range(n+1)]
         s1 = text1
         s2 = text2
         for j in range(m+1):
@@ -33,8 +33,6 @@ class Solution:
                     dp[i][j] = 1 + dp[i-1][j-1]
                 else:
                     dp[i][j] = max(dp[i][j - 1], dp[i-1][j])
-        # print(dp[n][m])
-        # ans = findAnswer(text1,text2,n,m,dp)
-        # return ans
+        
         return dp[n][m]
         
