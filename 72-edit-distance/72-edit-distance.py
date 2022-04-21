@@ -25,5 +25,5 @@ class Solution:
         n = len(word1)
         m = len(word2)
         dp = [[-1 for j in range(m)] for i in range(n)]
-        ans = f(n-1, m-1, word1, word2,dp)
+        ans = f(n-1, m-1, word1, word2, dp)
         return ans
