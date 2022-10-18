@@ -9,7 +9,7 @@ class Solution:
         
         visited[row][col]=1
         queue = []
-        queue.append([row,col])
+        queue.append((row,col))
         
         while queue:
             node = queue.pop(0)
@@ -23,7 +23,7 @@ class Solution:
                     if nrow >=0 and nrow < n and ncol >= 0 and ncol < m:
                         if grid[nrow][ncol] == 1 and not visited[nrow][ncol]:
                             visited[nrow][ncol] = 1
-                            queue.append([nrow,ncol])
+                            queue.append((nrow,ncol))
         
     def numIslands(self,grid):
         #code here
