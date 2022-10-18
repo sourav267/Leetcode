@@ -12,9 +12,9 @@ class Solution:
         queue.append([row,col])
         
         while queue:
-            row = queue[0][0]
-            col = queue[0][1]
-            queue.pop(0)
+            node = queue.pop(0)
+            row = node[0]
+            col = node[1]
             
             for drow in range(-1,2):
                 for dcol in range(-1,2):
