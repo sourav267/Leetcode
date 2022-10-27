@@ -7,12 +7,12 @@ class Solution:
 		m = len(grid[0])
 		cntFresh = 0
 		queue = []
-		visited = [[0 for j in range(m)] for i in range(n)]
+		visited = [[False for j in range(m)] for i in range(n)]
 		for i in range(n):
 		    for j in range(m):
 		        if grid[i][j]==2:
 		            queue.append([[i,j],0])
-		            visited[i][j] = 2
+		            visited[i][j] = True
 		        if grid[i][j] == 1:
 		            cntFresh += 1
         tm = 0
@@ -29,9 +29,9 @@ class Solution:
                 nrow = r + drow[i]
                 ncol = c + dcol[i]
                 if nrow >= 0 and nrow <n and ncol >= 0 and ncol<m:
-                    if  visited[nrow][ncol] == 0 and grid[nrow][ncol] == 1:
+                    if  not visited[nrow][ncol] and grid[nrow][ncol] == 1:
                         queue.append([[nrow,ncol],t+1])
-                        visited[nrow][ncol] = 1
+                        visited[nrow][ncol] = True
                         cnt += 1
         
         if cnt != cntFresh:
